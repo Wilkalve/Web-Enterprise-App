@@ -31,7 +31,7 @@ public class Slider implements Serializable {
     public static final int DECREASE_RATE = 1;
     public static final int X_LIMIT = 500;
     public static final int Y_LIMIT = 500;
-    public static final int SIZE_LIMIT = 100;
+    public static final int SIZE_LIMIT = 1;
     public static final int MAX_TRAVEL_LIMIT = 50;
     
     // Position attributes with constraints
@@ -70,6 +70,9 @@ public class Slider implements Serializable {
      
      // slider Movement logic 
     public void timeStep() {
+        
+        if (maxTravel == null || maxTravel <= 0) return;
+        
         currentTravel += TRAVEL_SPEED * mvtDirection;
 
         if (Math.abs(currentTravel) >= maxTravel) {
