@@ -4,64 +4,66 @@
  */
 package cst8218.foko0002.slider.singleton;
 
-import cst8218.foko0002.slider.SliderFacade;
+
 import cst8218.foko0002.slider.entity.Slider;
+import cst8218.foko0002.slider.entity.SliderFacade; 
+
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.Singleton;
-import jakarta.ejb.LocalBean;
 import jakarta.ejb.Startup;
+import jakarta.inject.Inject;
+
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Logger;
 
-/**
- *
- * @author wilfr
- */
-@Startup
 @Singleton
-@LocalBean
+@Startup
 public class SliderGame {
 
     private static final Logger LOGGER = Logger.getLogger(SliderGame.class.getName());
-    private ExecutorService executorService;
-    private volatile boolean running = true; // Flag for stopping the loop safely
-    private List<Slider> sliders;
-    private static final int CHANGE_RATE = 60;
-    
-    private SliderFacade sliderFacade; // Assuming this is injected elsewhere
+    private static final int CHANGE_RATE = 60; // Updates per second
+    private volatile boolean running = true; // Flag for stopping safely
+
+    private List<Slider> sliders = new CopyOnWriteArrayList<>(); // Thread-safe list
+
+    @Inject
+    private SliderFacade sliderFacade; // Ensure proper EJB injection
 
     @PostConstruct
     public void go() {
-        executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(() -> {
+        new Thread(() -> {
+            LOGGER.info("SliderGame: Game loop starting...");
+
             while (running) {
                 try {
-                    // Fetch all sliders and update them
+                    // Fetch all sliders from DB and update them
                     sliders = sliderFacade.findAll();
                     for (Slider slider : sliders) {
                         slider.timeStep();
-                        sliderFacade.edit(slider);
+                        sliderFacade.edit(slider); // Persist changes
                     }
 
-                    // Wait before processing the next frame
+                    // Sleep to match animation frame rate
                     Thread.sleep((long) (1000.0 / CHANGE_RATE));
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt(); // Restore interrupt status
-                    LOGGER.severe("Game loop interrupted: " + e.getMessage());
+                    LOGGER.severe("SliderGame: Interrupted exception: " + e.getMessage());
+                    break;
                 } catch (Exception e) {
-                    LOGGER.severe("Unexpected error in game loop: " + e.getMessage());
+                    LOGGER.severe("SliderGame: Unexpected error in game loop: " + e.getMessage());
                 }
             }
-        });
+            LOGGER.info("SliderGame: Game loop stopped.");
+        }).start();
     }
 
-    // Method to safely stop the game loop
+    public List<Slider> getSliders() {
+        return new CopyOnWriteArrayList<>(sliders); // Return a thread-safe copy
+    }
+
     public void stopGame() {
         running = false;
-        if (executorService != null) {
-            executorService.shutdown();
-        }
+        LOGGER.info("SliderGame: Stopping game...");
     }
 }
