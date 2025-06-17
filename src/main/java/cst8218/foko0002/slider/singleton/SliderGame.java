@@ -25,7 +25,8 @@ public class SliderGame {
     private static final int CHANGE_RATE = 60; // Updates per second
     private volatile boolean running = true; // Flag for stopping safely
 
-    private List<Slider> sliders = new CopyOnWriteArrayList<>(); // Thread-safe list
+    // Thread-safe list
+    private List<Slider> sliders = new CopyOnWriteArrayList<>(); 
 
     @Inject
     private SliderFacade sliderFacade; // Ensure proper EJB injection
