@@ -19,7 +19,7 @@ public class Slider implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
     // Constants variables value for the slider properties
     public static final int TRAVEL_SPEED = 5; 
     public static final int MAX_DIR_CHANGES = 5;
@@ -159,7 +159,6 @@ public class Slider implements Serializable {
     public void setMvtDirection(int mvtDirection) { this.mvtDirection = mvtDirection; }
     public int getDirChangeCount() { return dirChangeCount; }
     public void setDirChangeCount(int dirChangeCount) { this.dirChangeCount = dirChangeCount; }
-
     @Override
     public String toString() {
         return "Slider{" + "id=" + id + ", x=" + x + ", y=" + y +
@@ -169,5 +168,13 @@ public class Slider implements Serializable {
                ", mvtDirection=" + mvtDirection +
                ", dirChangeCount=" + dirChangeCount +
                '}';
+    }
+
+    public Object getTitle() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setTitle(Object title) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

@@ -75,6 +75,7 @@ public Response create(Slider entity, @Context UriInfo uriInfo) {
         return Response.ok(entity).build();
     }
 
+    
     @POST
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -129,5 +130,6 @@ public Response create(Slider entity, @Context UriInfo uriInfo) {
         return em;
     }
     
+   
     
 }

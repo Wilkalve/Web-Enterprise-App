@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/J2EE/EJB40/SingletonEjbClass.java to edit this template
  */
-package cst8218.foko0002.slider.singleton;
+package cst8218.foko0002.presentation;
 
 
 import cst8218.foko0002.slider.entity.Slider;
@@ -65,6 +65,7 @@ public class SliderGame {
 
     public void stopGame() {
         running = false;
+        
         LOGGER.info("SliderGame: Stopping game...");
     }
 }

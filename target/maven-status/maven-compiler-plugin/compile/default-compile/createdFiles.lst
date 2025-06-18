@@ -1,8 +1,8 @@
+cst8218\foko0002\presentation\SliderGame.class
 cst8218\foko0002\slider\entity\Slider.class
 cst8218\foko0002\slider\SliderFacadeREST.class
 cst8218\foko0002\slider\entity\SliderFacade.class
 cst8218\foko0002\slider\resources\JakartaEE10Resource.class
-cst8218\foko0002\slider\singleton\SliderGame.class
 cst8218\foko0002\slider\SliderBean.class
 cst8218\foko0002\slider\AbstractFacade.class
 cst8218\foko0002\slider\JakartaRestConfiguration.class

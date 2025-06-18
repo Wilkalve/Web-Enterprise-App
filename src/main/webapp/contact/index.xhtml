@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Slider Game</title>
+    <style>
+        canvas { border: 1px solid black; }
+    </style>
+</h:head>
+<h:body>
+    <h:outputText value="Welcome to the Slider Game!" />
+    <br/>
+
+    <h:form>
+        <h:dataTable value="#{sliderBean.sliders}" var="slider">
+            <h:column><f:facet name="header">ID</f:facet>#{slider.id}</h:column>
+            <h:column><f:facet name="header">X</f:facet>#{slider.x}</h:column>
+            <h:column><f:facet name="header">Y</f:facet>#{slider.y}</h:column>
+            <h:column><f:facet name="header">Size</f:facet>#{slider.size}</h:column>
+            <h:column><f:facet name="header">Max Travel</f:facet>#{slider.maxTravel}</h:column>
+        </h:dataTable>
+
+        <h:commandButton value="Refresh Sliders" action="#{sliderBean.refreshSliders}">
+            <f:ajax execute="@this" render="@form"/>
+        </h:commandButton>
+    </h:form>
+
+    <canvas id="sliderCanvas" width="800" height="400"></canvas>
+
+    <script>
+        window.onload = function() {
+            fetchSliders();
+            setInterval(fetchSliders, 1000);
+        };
+
+        function fetchSliders() {
+            fetch("/Web-Enterprise-App/resources/cst8218.foko0002.slider.entity.slider")
+                .then(response => response.json())
+                .then(sliders => {
+                    if (sliders.length > 0) {
+                        drawSliders(sliders);
+                    }
+                })
+                .catch(error => console.error("Error fetching sliders:", error));
+        }
+
+        function drawSliders(sliders) {
+            const canvas = document.getElementById("sliderCanvas");
+            const ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            sliders.forEach(slider => {
+                const pos = slider.currentTravel !== undefined
+                    ? slider.x + slider.currentTravel
+                    : slider.x;
+                ctx.fillStyle = "black";
+                ctx.fillRect(pos, slider.y, slider.size, 10);
+            });
+        }
+    </script>
+</h:body>
+</html>

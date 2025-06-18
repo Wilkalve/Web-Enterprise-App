@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Create Slider</title>
+</h:head>
+
+<h:body>
+    <h2>Create a New Slider</h2>
+
+    <h:form>
+        <h:messages globalOnly="true" style="color:red;" />
+
+        <h:panelGrid columns="2" cellpadding="5">
+
+            <h:outputLabel for="x" value="X Position:" />
+            <h:inputText id="x" value="#{sliderBean.selected.x}" required="true">
+                <f:validateLongRange minimum="0" maximum="#{sliderBean.getX_LIMIT()}" />
+            </h:inputText>
+            <h:message for="x" style="color:red;" />
+
+            <h:outputLabel for="y" value="Y Position:" />
+            <h:inputText id="y" value="#{sliderBean.selected.y}" required="true">
+                <f:validateLongRange minimum="0" maximum="#{sliderBean.getY_LIMIT()}" />
+            </h:inputText>
+            <h:message for="y" style="color:red;" />
+
+            <h:outputLabel for="size" value="Size:" />
+            <h:inputText id="size" value="#{sliderBean.selected.size}" required="true">
+                <f:validateLongRange minimum="#{sliderBean.getMIN_SIZE()}" maximum="#{sliderBean.getMAX_SIZE()}" />
+            </h:inputText>
+            <h:message for="size" style="color:red;" />
+
+            <h:outputLabel for="travel" value="Max Travel:" />
+            <h:inputText id="travel" value="#{sliderBean.selected.maxTravel}" required="true">
+                <f:validateLongRange minimum="#{sliderBean.getMIN_TRAVEL_LIMIT() }" maximum="#{sliderBean.getMAX_TRAVEL_LIMIT()}" />
+            </h:inputText>
+            <h:message for="travel" style="color:red;" />
+
+        </h:panelGrid>
+
+        <br/>
+        <h:commandButton value="Save and View Game" action="#{sliderBean.create}" />
+    </h:form>
+</h:body>
+</html>
