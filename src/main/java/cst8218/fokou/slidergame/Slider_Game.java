@@ -4,7 +4,7 @@
  */
 package cst8218.fokou.slidergame;
 
-import cst8218.fokou.slidergame.slider.Slider;
+import cst8218.fokou.slidergame.entity.Slider;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
@@ -15,7 +15,7 @@ import java.util.List;
 @Singleton
 public class Slider_Game {
 
-    private static final double CHANGE_RATE = 2.0; // updates per second
+    private static final double CHANGE_RATE = 3.0; // updates per second
 
     @EJB
     private SliderFacade sliderFacade;

@@ -1,6 +1,6 @@
 package cst8218.fokou.slidergame.presentation;
 
-import cst8218.fokou.slidergame.slider.Slider;
+import cst8218.fokou.slidergame.entity.Slider;
 import cst8218.fokou.slidergame.presentation.util.JsfUtil;
 import cst8218.fokou.slidergame.presentation.util.PaginationHelper;
 import cst8218.fokou.slidergame.controller.SliderJpaController;

@@ -6,7 +6,7 @@ package cst8218.fokou.slidergame.controller;
 
 import cst8218.fokou.slidergame.controller.exceptions.NonexistentEntityException;
 import cst8218.fokou.slidergame.controller.exceptions.RollbackFailureException;
-import cst8218.fokou.slidergame.slider.Slider;
+import cst8218.fokou.slidergame.entity.Slider;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import java.io.Serializable;

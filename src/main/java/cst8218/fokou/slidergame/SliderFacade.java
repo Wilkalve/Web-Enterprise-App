@@ -4,7 +4,7 @@
  */
 package cst8218.fokou.slidergame;
 
-import cst8218.fokou.slidergame.slider.Slider;
+import cst8218.fokou.slidergame.entity.Slider;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

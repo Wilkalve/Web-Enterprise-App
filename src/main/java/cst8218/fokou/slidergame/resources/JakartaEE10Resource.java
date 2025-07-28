@@ -1,5 +1,9 @@
 package cst8218.fokou.slidergame.resources;
 
+import jakarta.annotation.security.DeclareRoles;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
+import jakarta.security.enterprise.identitystore.PasswordHash;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;

@@ -1,15 +1,82 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="jakarta.faces.html">
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:ui="jakarta.faces.facelets">
+
     <h:head>
-        <title>Facelet Title</title>
+        <title>Welcome to Slider Game</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
+        <h:outputStylesheet library="css" name="jsfcrud.css" />
     </h:head>
-    <h:body>
-        Hello from Facelets
+
+    <h:body style="font-family: sans-serif; padding: 20px;">
+        <h1>Welcome to the Slider Game App</h1>
+
+        <!-- 🌐 Language Selection -->
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Choose Language:" />
+                <h:selectOneMenu value="#{localeBean.locale}" onchange="submit()">
+                    <f:selectItem itemValue="en" itemLabel="English" />
+                    <f:selectItem itemValue="fr" itemLabel="Français" />
+                </h:selectOneMenu>
+            </h:panelGrid>
+        </h:form>
+
+        <hr/>
+
+        <!--  Guest Access -->
+        <h:panelGroup rendered="#{not securityContextBean.authenticated}">
+            <h:panelGrid columns="1" style="margin-top:20px;">
+                <h:outputText value="Create an account or log in to begin:" />
+                <h:link value="Create Account" outcome="/appUser/Create.xhtml" />
+                <h:link value="Login to Continue" outcome="/login.xhtml" />
+            </h:panelGrid>
+        </h:panelGroup>
+
+        <!--  Authenticated Access -->
+        <h:panelGroup rendered="#{securityContextBean.authenticated}">
+            <h:panelGrid columns="1" style="margin-top:20px;">
+                <h:outputText value="Welcome, " />
+                <h:outputText value="#{securityContextBean.principalName}" style="font-weight:bold;" />
+            </h:panelGrid>
+
+            <hr/>
+
+            <!--  Admin -->
+            <h:panelGroup rendered="#{request.isUserInRole('Admin')}">
+                <h:outputText value="Admin Panel:" />
+                <h:panelGrid columns="1">
+                    <h:link value="Manage Users" outcome="/appUser/List.xhtml" />
+                    <h:link value="Create Slider" outcome="/slider/Create.xhtml" />
+                    <h:link value="View Sliders" outcome="/slider/List.xhtml" />
+                    <h:link value="REST API Dashboard" outcome="/api/index.xhtml" />
+                </h:panelGrid>
+            </h:panelGroup>
+
+            <!--  WEBGroup -->
+            <h:panelGroup rendered="#{request.isUserInRole('WEBGroup') and not request.isUserInRole('Admin')}">
+                <h:outputText value="Slider Tools:" />
+                <h:panelGrid columns="1">
+                    <h:link value="Create Slider" outcome="/slider/Create.xhtml" />
+                    <h:link value="View Sliders" outcome="/slider/List.xhtml" />
+                </h:panelGrid>
+            </h:panelGroup>
+
+            <!-- 🧩 RESTFullGroup -->
+            <h:panelGroup rendered="#{request.isUserInRole('RESTFullGroup') and not request.isUserInRole('Admin')}">
+                <h:outputText value="API Access:" />
+                <h:panelGrid columns="1">
+                    <h:link value="Open REST API Dashboard" outcome="/api/index.xhtml" />
+                </h:panelGrid>
+            </h:panelGroup>
+        </h:panelGroup>
         <br />
-        <h:link outcome="/slider/List" value="Show All Slider Items"/>
+<!--        <h:link outcome="/appUser/List" value="Show All AppUser Items"/>
+        <br />
+        <h:link outcome="/slider/List" value="Show All Slider Items"/>-->
     </h:body>
+    
 
 </html>

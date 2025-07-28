@@ -4,7 +4,8 @@
  */
 package cst8218.fokou.slidergame.resources;
 
-import cst8218.fokou.slidergame.slider.Slider;
+import cst8218.fokou.slidergame.entity.Slider;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -25,8 +26,12 @@ import java.util.List;
  * 
  * @author wilfr
  */
+
 @Stateless
 @Path("cst8218.fokou.slidergame.slider.slider")
+
+//restricted by roles
+@RolesAllowed({"RESTFullGroup", "Admin"})
 public class SliderFacadeREST extends AbstractFacade<Slider> {
 
     @PersistenceContext(unitName = "my_persistence_unit")
