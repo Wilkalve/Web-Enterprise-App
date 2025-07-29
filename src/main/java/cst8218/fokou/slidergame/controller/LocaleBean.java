@@ -13,6 +13,7 @@ import java.util.Locale;
 /**
  *
  * @author wilfr
+ * This class Localize (translate) the JSF pages
  */
 @Named("localeBean")
 @SessionScoped

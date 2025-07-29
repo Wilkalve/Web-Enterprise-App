@@ -5,6 +5,7 @@ C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\presenta
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\exceptions\NonexistentEntityException.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\Slider_Game.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\LocaleBean.java
+C:\Web_Enterprise_APP\sliderGame\src\main\java\myApp\security\LoginBean.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\exceptions\PreexistingEntityException.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\presentation\AppUserController.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\exceptions\IllegalOrphanException.java
@@ -18,5 +19,4 @@ C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controll
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\JakartaRestConfiguration.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\presentation\util\PaginationHelper.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\SliderFacade.java
-C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\LoginBean.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\resources\SliderFacadeREST.java

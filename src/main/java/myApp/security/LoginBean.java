@@ -1,5 +1,6 @@
-package cst8218.fokou.slidergame.controller;
+package myApp.security;
 
+import cst8218.fokou.slidergame.controller.AppUserJpaController;
 import cst8218.fokou.slidergame.entity.AppUser;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
