@@ -22,24 +22,27 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd">
 
+  
+
     <application>
-        <resource-bundle>
-            <base-name>/Bundle</base-name>
-            <var>bundle</var>
-        </resource-bundle>
-        <resource-bundle>
-            <base-name>/Bundle</base-name>
-            <var>bundle</var>
-        </resource-bundle>
-        <resource-bundle>
-            <base-name>/Bundle</base-name>
-            <var>bundle</var>
-        </resource-bundle>
-        <resource-bundle>
-            <base-name>/Bundle</base-name>
-            <var>bundle</var>
-        </resource-bundle>
-    </application>
+    <!-- General UI labels -->
+    <resource-bundle>
+        <base-name>messages</base-name>
+        <var>msg</var>
+    </resource-bundle>
+
+    <!-- NetBeans-generated CRUD labels -->
+    <resource-bundle>
+        <base-name>Bundle</base-name>
+        <var>bundle</var>
+    </resource-bundle>
+
+    <!-- Supported locales -->
+    <locale-config>
+        <default-locale>en</default-locale>
+        <supported-locale>fr</supported-locale>
+    </locale-config>
+</application>
 
     <!-- 🔁 Login to Index Navigation -->
     <navigation-rule>
@@ -51,5 +54,4 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
-
 </faces-config>
