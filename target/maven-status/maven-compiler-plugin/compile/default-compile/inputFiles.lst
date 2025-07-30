@@ -10,7 +10,9 @@ C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controll
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\presentation\AppUserController.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\exceptions\IllegalOrphanException.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\resources\AbstractFacade.java
+C:\Web_Enterprise_APP\sliderGame\src\main\java\myApp\security\UserService.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\resources\JakartaEE10Resource.java
+C:\Web_Enterprise_APP\sliderGame\src\main\java\myApp\security\BasicAuthFilter.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\exceptions\RollbackFailureException.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\AppUserJpaController.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\presentation\util\JsfUtil.java

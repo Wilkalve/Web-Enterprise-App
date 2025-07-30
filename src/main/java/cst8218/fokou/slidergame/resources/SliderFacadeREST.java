@@ -26,12 +26,9 @@ import java.util.List;
  * 
  * @author wilfr
  */
-
-@Stateless
-@Path("cst8218.fokou.slidergame.slider.slider")
-
 //restricted by roles
-@RolesAllowed({"RESTFullGroup", "Admin"})
+@Stateless
+@Path("cst8218.fokou.slidergame.slider")
 public class SliderFacadeREST extends AbstractFacade<Slider> {
 
     @PersistenceContext(unitName = "my_persistence_unit")
@@ -41,10 +38,8 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
         super(Slider.class);
     }
 
-    /**
-     * POST on root: create if id is null, update if id exists, error if id not found.
-     */
     @POST
+    @RolesAllowed({"RESTFullGroup", "Admin"})
     public Response createOrUpdate(Slider slider) {
         if (slider.getId() == null) {
             super.create(slider);
@@ -52,7 +47,7 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
         } else {
             Slider existing = super.find(slider.getId());
             if (existing != null) {
-                slider.updateFrom(existing); // define in Slider class
+                existing.updateFrom(slider);  // updated direction
                 super.edit(existing);
                 return Response.ok(existing).build();
             } else {
@@ -61,11 +56,9 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
         }
     }
 
-    /**
-     * POST on specific ID: safely update existing Slider.
-     */
     @POST
     @Path("{id}")
+    @RolesAllowed({"RESTFullGroup", "Admin"})
     public Response updateById(@PathParam("id") Long id, Slider slider) {
         if (slider.getId() != null && !slider.getId().equals(id)) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -74,16 +67,14 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
         if (existing == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        slider.updateFrom(existing);
+        existing.updateFrom(slider);  // updated direction
         super.edit(existing);
         return Response.ok(existing).build();
     }
 
-    /**
-     * PUT on specific ID: replace entire Slider.
-     */
     @PUT
     @Path("{id}")
+    @RolesAllowed({"RESTFullGroup", "Admin"})
     public Response replace(@PathParam("id") Long id, Slider slider) {
         if (slider.getId() != null && !slider.getId().equals(id)) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -92,38 +83,32 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
         if (existing == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        slider.setId(id); // Ensure ID remains unchanged
+        slider.setId(id);
         super.edit(slider);
         return Response.ok(slider).build();
     }
 
-    /**
-     * PUT on root: not allowed.
-     */
     @PUT
+    @RolesAllowed({"RESTFullGroup", "Admin"})
     public Response putNotAllowed() {
         return Response.status(Response.Status.METHOD_NOT_ALLOWED).build();
     }
 
-    /**
-     * DELETE a specific Slider.
-     */
     @DELETE
     @Path("{id}")
+    @RolesAllowed({"RESTFullGroup", "Admin"})
     public Response remove(@PathParam("id") Long id) {
         Slider existing = super.find(id);
         if (existing == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         super.remove(existing);
-        return Response.noContent().build(); // 204
+        return Response.noContent().build();
     }
 
-    /**
-     * GET a specific Slider.
-     */
     @GET
     @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("id") Long id) {
         Slider slider = super.find(id);
         if (slider == null) {
@@ -132,28 +117,21 @@ public class SliderFacadeREST extends AbstractFacade<Slider> {
         return Response.ok(slider).build();
     }
 
-    /**
-     * GET all Sliders.
-     */
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public Response findAllSliders() {
         List<Slider> sliders = super.findAll();
         return Response.ok(sliders).build();
     }
 
-    /**
-     * GET a range of Sliders.
-     */
     @GET
     @Path("{from}/{to}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         List<Slider> sliders = super.findRange(new int[]{from, to});
         return Response.ok(sliders).build();
     }
 
-    /**
-     * GET the count of Sliders in the database.
-     */
     @GET
     @Path("count")
     @Produces(MediaType.TEXT_PLAIN)

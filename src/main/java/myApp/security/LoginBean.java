@@ -16,6 +16,7 @@ import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import jakarta.transaction.UserTransaction;
 import java.util.HashMap;
 
+// This is the @name login class use to look username and password and redirect users to their appropriate group.
 @Named("loginBean")
 @RequestScoped
 public class LoginBean {
