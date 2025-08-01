@@ -68,7 +68,10 @@ private Pbkdf2PasswordHash hasher;
                         case "Admin":
                             return "/faces/slider/Create.xhtml?faces-redirect=true";
                         case "WEBGroup":
-                            return "/faces/slider/Create.xhtml?faces-redirect=true";
+                           FacesContext.getCurrentInstance().getExternalContext()
+    .redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + "/reactPage.html");
+return null;
+
                         case "RESTFullGroup":
                             return "/faces/api/index.xhtml?faces-redirect=true";
                         default:

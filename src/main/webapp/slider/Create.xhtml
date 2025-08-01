@@ -42,6 +42,11 @@
             <h:commandLink action="#{sliderController.prepareList}" value="#{msg['CreateSliderShowAllLink']}" immediate="true"/>
             <br /><br />
             <h:link outcome="/index" value="#{msg['CreateSliderIndexLink']}"/>
+            <br /><br />
+            <h:outputLink value="#{facesContext.externalContext.requestContextPath}/reactPage.html">
+              View Slider object
+             </h:outputLink>
+
 
         </h:form>
     </ui:define>

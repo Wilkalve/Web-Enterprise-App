@@ -1,6 +1,7 @@
 cst8218\fokou\slidergame\presentation\AppUserController$AppUserControllerConverter.class
 cst8218\fokou\slidergame\presentation\AppUserController.class
 myApp\security\SecurityConfig.class
+cst8218\fokou\slidergame\resources\RestApplication.class
 cst8218\fokou\slidergame\controller\exceptions\IllegalOrphanException.class
 myApp\security\LoginBean.class
 cst8218\fokou\slidergame\controller\exceptions\RollbackFailureException.class

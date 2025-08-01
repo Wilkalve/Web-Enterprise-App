@@ -48,39 +48,50 @@
         </auth-constraint>
     </security-constraint>
 
-    <!-- Protect Slider Pages -->
+  
+  <!-- Protected Slider pages -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>SliderPages</web-resource-name>
-            <url-pattern>/faces/Slider/*</url-pattern>
+            <url-pattern>/Slider/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>WEBGroup</role-name>
             <role-name>Admin</role-name>
         </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
 
     <!--  Protect RESTful API -->
-    <security-constraint>
+      <security-constraint>
         <web-resource-collection>
             <web-resource-name>RESTAPI</web-resource-name>
-            <url-pattern>/api/*</url-pattern>
+            <url-pattern>/resource/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>RESTFullGroup</role-name>
             <role-name>Admin</role-name>
         </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
 
     <!--  FORM Authentication Setup -->
-    <login-config>
-        <auth-method>FORM</auth-method>
+<!--    <login-config>
+        <auth-method>Form</auth-method>
         <realm-name>ApplicationRealm</realm-name>
         <form-login-config>
             <form-login-page>/login.xhtml</form-login-page>
             <form-error-page>/loginError.xhtml</form-error-page>
         </form-login-config>
-    </login-config>
+    </login-config>-->
+    <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>ApplicationRealm</realm-name>
+</login-config>
 
     <!-- Declared Roles -->
     <security-role>

@@ -6,9 +6,11 @@ package cst8218.fokou.slidergame;
 
 import cst8218.fokou.slidergame.entity.Slider;
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
 import jakarta.ejb.EJB;
+import jakarta.enterprise.concurrent.ManagedExecutorService;
 import java.util.List;
 
 @Startup
@@ -20,26 +22,27 @@ public class Slider_Game {
     @EJB
     private SliderFacade sliderFacade;
 
+    @Resource
+    private ManagedExecutorService executor;
+
     @PostConstruct
     public void go() {
-        new Thread(() -> {
+        executor.submit(() -> {
             try {
                 Thread.sleep(5000); // wait for container to stabilize
-            } catch (InterruptedException ignored) {}
-
-            while (true) {
-                try {
-                    List<Slider> sliders = sliderFacade.findAll();
-                    for (Slider slider : sliders) {
-                        slider.timeStep();
-                        sliderFacade.edit(slider);
+                while (true) {
+                    try {
+                        List<Slider> sliders = sliderFacade.findAll();
+                        for (Slider slider : sliders) {
+                            slider.timeStep();
+                            sliderFacade.edit(slider);
+                        }
+                        Thread.sleep((long)(1000 / CHANGE_RATE));
+                    } catch (Exception e) {
+                        System.err.println("SliderGame loop error: " + e.getMessage());
                     }
-
-                    Thread.sleep((long)(1000 / CHANGE_RATE));
-                } catch (Exception e) {
-                    System.err.println("SliderGame: Unexpected error in game loop: " + e.getMessage());
                 }
-            }
-        }).start();
+            } catch (InterruptedException ignored) {}
+        });
     }
 }

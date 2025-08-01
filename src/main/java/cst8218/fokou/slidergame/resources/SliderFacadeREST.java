@@ -9,6 +9,7 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -29,6 +30,9 @@ import java.util.List;
 //restricted by roles
 @Stateless
 @Path("cst8218.fokou.slidergame.slider")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
+@RolesAllowed({"Admin", "RESTFullGroup"})
 public class SliderFacadeREST extends AbstractFacade<Slider> {
 
     @PersistenceContext(unitName = "my_persistence_unit")
