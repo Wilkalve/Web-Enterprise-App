@@ -64,34 +64,15 @@
         </user-data-constraint>
     </security-constraint>
 
-    <!--  Protect RESTful API -->
-      <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>RESTAPI</web-resource-name>
-            <url-pattern>/resource/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>RESTFullGroup</role-name>
-            <role-name>Admin</role-name>
-        </auth-constraint>
-        <user-data-constraint>
-            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-        </user-data-constraint>
-    </security-constraint>
-
-    <!--  FORM Authentication Setup -->
-<!--    <login-config>
+    <!-- Login Config (Form Auth for JSF) -->
+    <login-config>
         <auth-method>Form</auth-method>
         <realm-name>ApplicationRealm</realm-name>
         <form-login-config>
             <form-login-page>/login.xhtml</form-login-page>
             <form-error-page>/loginError.xhtml</form-error-page>
         </form-login-config>
-    </login-config>-->
-    <login-config>
-    <auth-method>BASIC</auth-method>
-    <realm-name>ApplicationRealm</realm-name>
-</login-config>
+    </login-config>
 
     <!-- Declared Roles -->
     <security-role>
@@ -103,6 +84,5 @@
     <security-role>
         <role-name>Admin</role-name>
     </security-role>
-
 
 </web-app>

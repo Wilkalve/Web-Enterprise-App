@@ -1,14 +1,15 @@
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\presentation\SliderController.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\resources\RestApplication.java
+C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\resources\CorsFilter.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\LocaleBean.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\myApp\security\LoginBean.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\presentation\AppUserController.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\resources\AbstractFacade.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\resources\JakartaEE10Resource.java
-C:\Web_Enterprise_APP\sliderGame\src\main\java\myApp\security\BasicAuthFilter.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\exceptions\RollbackFailureException.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\SliderJpaController.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\JakartaRestConfiguration.java
+C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\resources\SliderResource.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\resources\SliderFacadeREST.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\entity\AppUser.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\entity\Slider.java
@@ -17,7 +18,6 @@ C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controll
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\Slider_Game.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\exceptions\PreexistingEntityException.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\exceptions\IllegalOrphanException.java
-C:\Web_Enterprise_APP\sliderGame\src\main\java\myApp\security\UserService.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\controller\AppUserJpaController.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\presentation\util\JsfUtil.java
 C:\Web_Enterprise_APP\sliderGame\src\main\java\cst8218\fokou\slidergame\AbstractFacade.java

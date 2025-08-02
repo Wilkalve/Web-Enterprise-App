@@ -13,14 +13,12 @@ import jakarta.security.enterprise.identitystore.PasswordHash;
  */
 
 @DatabaseIdentityStoreDefinition(
-    dataSourceLookup = "jdbc/YourDataSource", 
+    dataSourceLookup = "jdbc/yourDataSource",
     callerQuery = "SELECT password FROM appuser WHERE username = ?",
-    groupsQuery = "SELECT groupname FROM user_groups WHERE username = ?",
-    hashAlgorithm = PasswordHash.class, 
-    priority = 10
+    groupsQuery = "SELECT groupname FROM appuser WHERE username = ?",
+    hashAlgorithm = PasswordHash.class,
+    priority = 30
 )
-@DeclareRoles({ "Admin", "WEBGroup", "RESTFullGroup" }) 
+@DeclareRoles({"Admin", "WEBGroup", "RESTFullGroup"})
 @ApplicationScoped
-public class SecurityConfig {
-   
-}
+public class SecurityConfig { }
